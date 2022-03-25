@@ -32,12 +32,6 @@ To see the available options and switches:
 $ python cli.py -h
 ```
 
-and
-
-```
-$ python cli.py train -h
-```
-
 ### 2️⃣ As a package
 
 You can also install and use ProsPr as a package inside your own projects:
