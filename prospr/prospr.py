@@ -69,7 +69,13 @@ def fwd_with_external_params(
         # Multiplication by the pruning mask has already happened outside of here.
         def conv2d_fwd_external_params(self, x):
             return F.conv2d(
-                x, weight, bias, self.stride, self.padding, self.dilation, self.groups,
+                x,
+                weight,
+                bias,
+                self.stride,
+                self.padding,
+                self.dilation,
+                self.groups,
             )
 
         def linear_fwd_external_params(self, x):

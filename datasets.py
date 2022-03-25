@@ -105,11 +105,13 @@ def get_imagenet(root: Path, standardize=True):
         )
     elif (root / "imagenet").exists():
         train = datasets.ImageFolder(
-            root / "imagenet" / "train", transform=transforms.Compose(train_transforms),
+            root / "imagenet" / "train",
+            transform=transforms.Compose(train_transforms),
         )
 
         val = datasets.ImageFolder(
-            root / "imagenet" / "val", transform=transforms.Compose(val_transforms),
+            root / "imagenet" / "val",
+            transform=transforms.Compose(val_transforms),
         )
     else:
         raise FileNotFoundError
@@ -158,7 +160,8 @@ def get_tiny_imagenet(root: Path):
         zip_file.unlink()
 
     normalize = transforms.Normalize(
-        mean=[0.4802, 0.4481, 0.3975], std=[0.2770, 0.2691, 0.2821],
+        mean=[0.4802, 0.4481, 0.3975],
+        std=[0.2770, 0.2691, 0.2821],
     )
 
     train_dataset = datasets.ImageFolder(

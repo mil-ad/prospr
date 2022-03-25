@@ -50,7 +50,9 @@ def parse_args():
     )
 
     pruning_parser.add_argument(
-        "--prune-on-cpu", action="store_true", help="Do the pruning steps on CPU",
+        "--prune-on-cpu",
+        action="store_true",
+        help="Do the pruning steps on CPU",
     )
 
     pruning_parser.add_argument(
@@ -107,7 +109,10 @@ def parse_args():
     )
 
     training_group.add_argument(
-        "--batch-size", type=int, default=256, help="Batch size (default: %(default)s)",
+        "--batch-size",
+        type=int,
+        default=256,
+        help="Batch size (default: %(default)s)",
     )
 
     training_group.add_argument("--lr", type=float, default=0.1, help="Learning rate")
@@ -139,7 +144,10 @@ def parse_args():
     )
 
     training_group.add_argument(
-        "--weight-decay", type=float, default=5e-4, help="Weight decay (default: 5e-4)",
+        "--weight-decay",
+        type=float,
+        default=5e-4,
+        help="Weight decay (default: 5e-4)",
     )
 
     parser.add_argument(
@@ -156,7 +164,9 @@ def parse_args():
     )
 
     parser.add_argument(
-        "--logroot", default=Path.cwd(), type=Path,
+        "--logroot",
+        default=Path.cwd(),
+        type=Path,
     )
 
     parser.add_argument("--log-interval", type=int, default=50)

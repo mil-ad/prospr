@@ -47,7 +47,8 @@ def model_factory(config: str, dataset: str, disable_auto_patch: bool) -> nn.Mod
         # fmt: on
 
         model = vgg.VGG(
-            vgg.make_layers(vgg_cfg[config], batch_norm=True), num_classes=num_classes,
+            vgg.make_layers(vgg_cfg[config], batch_norm=True),
+            num_classes=num_classes,
         )
 
         if patch_for_smaller_input:

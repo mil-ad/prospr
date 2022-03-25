@@ -156,7 +156,12 @@ def train(hparams: utils.Hyperparameters):
 
         if hparams.store_checkpoints and (epoch % hparams.checkpoint_interval == 0):
             utils.save_checkpoint(
-                log_dir, model, optimizer, lr_scheduler, epoch, hparams.max_checkpoints,
+                log_dir,
+                model,
+                optimizer,
+                lr_scheduler,
+                epoch,
+                hparams.max_checkpoints,
             )
 
     print(
