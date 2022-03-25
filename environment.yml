@@ -1,0 +1,19 @@
+name: prospr
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+dependencies:
+  - python=3.8
+  - pytorch=1.9.1
+  - cudatoolkit=11.1
+  - torchvision
+  - setuptools
+  - pip
+  - numpy
+  - requests
+  - black
+  - flake8
+  - tqdm
+  - pip:
+    - "-e ."
