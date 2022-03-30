@@ -169,14 +169,14 @@ def compute_meta_grads(net, x, y, fast_params, detailed_params, weight_masks, me
         # gradient below is redundant and they'll will be the same the last set of
         # gradients computed in the inner loop. Keeping here in case I have
         # different batches.
-        g_fomaml = torch.autograd.grad(loss, fast_params, create_graph=False)
+        grads_fo = torch.autograd.grad(loss, fast_params, create_graph=False)
 
-        # g_fomaml includes gradient for unprunable parameters (e.g. BatchNorm
+        # grads_fo includes gradient for unprunable parameters (e.g. BatchNorm
         # parameters) so we have to filter it. Also manually propagate the last bit
         # to the masks
         meta_grads = []
         for g, fp, (param_name, module, _) in zip(
-            g_fomaml, fast_params, detailed_params
+            grads_fo, fast_params, detailed_params
         ):
             if param_name.endswith(".weight") and hasattr(module, "weight_mask"):
                 meta_grads.append(
@@ -213,7 +213,7 @@ def prune(
     net = deepcopy(net)
     net.train()
 
-    # Computing meta gradients in MAML is pretty memory-intensive and therefore
+    # Computing full meta gradients is pretty memory-intensive and therefore
     # better-suited for the CPU. We're (currently) only doing the inner-loop once anyway
     # so the speed-penalty is not that bad.
     if method == "full":
